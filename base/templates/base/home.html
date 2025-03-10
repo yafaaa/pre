@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Name - Personal Website</title>
+    <link href="{% static '/css/main.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-body h-100" id="profile-wrapper">
+                    <img id="profile-pic" src="{% static 'images/profile.jpg' %}" >
+                    <hr>
+                    <h4>Hi I'm {{ profiles.0.name }}!</h4>
+                    <p>{{ profiles.0.bio|truncatewords:20 }}</p>
+                </div>    
+            </div>
+            <div class="col-md-9">
+                <div class="card card-body h-100">
+                    <h4>{{ profiles.0.name }}</h4>
+                    <p>{{ profiles.0.contact_info|linebreaks }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Experience Section -->
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-body h-100">
+                    <h5>My Work Experience</h5>
+                    <hr>
+                    {% for experience in experiences %}
+                        <h6>{{ experience.title }}</h6>
+                        <p>{{ experience.start_date|date:"m/Y" }} - {{ experience.end_date|date:"m/Y" }}</p>
+                        <p>{{ experience.description|linebreaks }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Awards Section -->
+            <div class="col-md-6">
+                <div class="card card-body h-100">
+                    <h5>Awards and Honors</h5>
+                    <hr>
+                    {% for award in awards %}
+                        <h6>{{ award.title }}</h6>
+                        <p>{{ award.date|date:"m/Y" }}</p>
+                        <p>{{ award.description|linebreaks }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
