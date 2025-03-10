@@ -1,5 +1,6 @@
 body {
-    background-color: #F8F8F8!important;
+    background-color: #f0f2f5;
+    font-family: 'Arial', sans-serif;
 }
 
 #profile-wrapper {
@@ -12,6 +13,7 @@ body {
     border-radius: 50%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 15px;
 }
 
 ul {
@@ -27,4 +29,68 @@ ul {
 .social {
     width: 20px;
     height: 20px;
+}
+
+.card {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+h4, h5, h6 {
+    color: #333333;
+}
+
+p {
+    color: #666666;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.experience-item, .award-item {
+    border-left: 4px solid #007bff;
+    padding-left: 15px;
+    margin-bottom: 15px;
+}
+
+.experience-item h6, .award-item h6 {
+    color: #007bff;
+}
+
+.text-muted {
+    color: #999999;
+}
+
+hr {
+    border-top: 1px solid #dddddd;
+}
+
+@media (max-width: 768px) {
+    .card-body {
+        padding: 15px;
+    }
+
+    #profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 10px 0;
 }

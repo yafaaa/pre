@@ -3,41 +3,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Your Name - Personal Website</title>
-    <link href="{% static '/css/main.css' %}" rel="stylesheet" type="text/css">
+    <title>Mathias Amare - Personal Website</title>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Mathias Amare</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Awards</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
         <!-- Profile Section -->
         <div class="row">
             <div class="col-md-3">
-                <div class="card card-body h-100" id="profile-wrapper">
-                    <img id="profile-pic" src="{% static 'images/profile.jpg' %}" >
-                    <hr>
-                    <h4>Hi I'm {{ profiles.0.name }}!</h4>
-                    <p>{{ profiles.0.bio|truncatewords:20 }}</p>
-                </div>    
+                <div class="card card-body h-100 text-center">
+                    <img id="profile-pic" src="{{ profiles.0.profile_pic.url }}" class="img-fluid rounded-circle mb-3">
+                    <h4>{{ profiles.0.name }}</h4>
+                    <p>{{ profiles.0.bio }}</p>
+                </div>
             </div>
             <div class="col-md-9">
                 <div class="card card-body h-100">
-                    <h4>{{ profiles.0.name }}</h4>
-                    <p>{{ profiles.0.contact_info|linebreaks }}</p>
+                    <h4>Contact Information</h4>
+                    <p>{{ profiles.0.contact_info }}</p>
                 </div>
             </div>
         </div>
         
         <!-- Experience Section -->
-        <br>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-md-6">
                 <div class="card card-body h-100">
-                    <h5>My Work Experience</h5>
+                    <h5>Work Experience</h5>
                     <hr>
                     {% for experience in experiences %}
-                        <h6>{{ experience.title }}</h6>
-                        <p>{{ experience.start_date|date:"m/Y" }} - {{ experience.end_date|date:"m/Y" }}</p>
-                        <p>{{ experience.description|linebreaks }}</p>
+                        <div class="experience-item mb-3">
+                            <h6>{{ experience.title }}</h6>
+                            <p class="text-muted">{{ experience.start_date|date:"M Y" }} - {{ experience.end_date|date:"M Y" }}</p>
+                            <p>{{ experience.description }}</p>
+                        </div>
                     {% endfor %}
                 </div>
             </div>
@@ -48,13 +70,18 @@
                     <h5>Awards and Honors</h5>
                     <hr>
                     {% for award in awards %}
-                        <h6>{{ award.title }}</h6>
-                        <p>{{ award.date|date:"m/Y" }}</p>
-                        <p>{{ award.description|linebreaks }}</p>
+                        <div class="award-item mb-3">
+                            <h6>{{ award.title }}</h6>
+                            <p class="text-muted">{{ award.date|date:"M Y" }}</p>
+                            <p>{{ award.description }}</p>
+                        </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
     </div>
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 Mathias Amare. All rights reserved.</p>
+    </footer>
 </body>
 </html>
